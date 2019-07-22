@@ -1,0 +1,53 @@
+<br>
+<form class="form-horizontal" role="form">
+  <div clas="form-row">
+    <fieldset>
+
+      <!-- Textarea -->
+      <div class="form-group">
+        <div class="form-row">
+          <label class="col-md-3 control-label" for="fld_desc">Descripción:</label>
+          <div class="col-md-7">                     
+            <textarea class="form-control form-control-sm" rows="2" id="fld_desc" name="fld_desc"></textarea>
+          </div>
+        </div>
+      </div>
+      <!-- Text input-->
+      <div class="form-group">
+        <div class="form-row">
+          <label class="col-md-3 control-label" for="fld_tfs">Id TFS:</label>  
+          <div class="col-md-2">
+            <input id="fld_tfs" name="fld_tfs" type="text" class="form-control form-control-sm input-md">
+          </div>
+        </div>
+      </div>
+      <!-- Multiple Checkboxes (inline) -->
+      <div class="form-group">
+        <div class="form-row">
+          <label class="col-md-3 control-label" for="fld_tran">Transaccional:</label>
+          <div class="col-md-4">
+            <label class="checkbox-inline" for="fld_tran-0">
+              <input type="checkbox" name="fld_tran" id="fld_tran-0">
+            </label>
+          </div>
+        </div>
+      </div>
+  
+      <!-- Button -->
+      <div class="form-group">
+        <div class="form-row">
+          <label class="col-md-3 control-label" for="btn_form"></label>
+          <div class="col-md-3" *ngIf="!editing">
+            <button id="btn_edit" name="btn_edit" (click)="Edit()" class="btn btn-primary btn-sm mx-1">Editar</button>
+          </div>
+          <div class="col-md-3" *ngIf="editing">
+            <button id="btn_cancel" name="btn_cancel" (click)="Cancel()" class="btn btn-secondary btn-sm mx-1">Cancelar</button>
+            <button id="btn_ok" name="btn_ok" (click)="Confirm()" class="btn btn-primary btn-sm mx-1">Confirmar</button>
+          </div>
+        </div>
+      </div>
+
+    </fieldset>
+  </div>
+</form>
+<br>
