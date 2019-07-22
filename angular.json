@@ -23,9 +23,18 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "./src/assets/bootstrap.min.css",
+              "./src/styles.css",
+              "./src/assets/gistfile.css",
+              "./src/assets/github.min.css",
+              "./node_modules/font-awesome/css/font-awesome.css"
             ],
-            "scripts": []
+            "scripts": [ 
+              "./src/assets/jquery.min.js",  
+              "./src/assets/popper.min.js",  
+              "./src/assets/bootstrap.min.js",
+              "./src/assets/highlight.min.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -57,7 +66,8 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "registry-front:build"
+            "browserTarget": "registry-front:build",
+            "proxyConfig": "proxy.config.js"
           },
           "configurations": {
             "production": {
