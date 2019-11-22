@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ServicesService } from './services.service';
 import { Servicio } from './servicio';
 
@@ -8,12 +8,14 @@ import { Servicio } from './servicio';
   styleUrls: ['./app.component.css'],
   providers: [ ServicesService ]
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   public title = 'Catálogo de servicios';
-  public services: Servicio[];
+  public serv: Servicio[];
+  // public serv: Array<Servicio>;
+  // public serv: Object;
 
   constructor(
-    private _servicesService: ServicesService
+    protected servicesService: ServicesService
   ) { }
 
   ngOnInit() {
@@ -21,13 +23,25 @@ export class AppComponent {
   }
 
   getServices() {
-    this._servicesService.getServices().subscribe(
+    /*
+    this.servicesService.getServices().subscribe(
       result => {
         this.services = result;
       },
       error => {
-        console.log(<any>error);
+        //console.log(<any>error);
       }
     );
-  }  
+    */
+   this.servicesService.getServices()
+      .subscribe(
+        (data) => { // éxito
+          this.serv = <Servicio[]>data;
+        },
+        (error) => { // error
+          console.log(error);
+        }
+      );
+
+  }
 }

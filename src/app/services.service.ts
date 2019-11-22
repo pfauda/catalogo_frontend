@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
-import { Http, RequestOptionsArgs } from '@angular/http';
-import { map } from 'rxjs/operators';
+import { HttpClient } from '@angular/common/http';
 import { GLOBAL } from '../assets/global';
+import { map } from 'rxjs/operators';
+import { Metodo } from './metodo';
+import { Servicio } from './servicio';
 
 @Injectable({
   providedIn: 'root'
@@ -10,23 +12,38 @@ export class ServicesService {
 
   public url: string;
 
-  constructor(
-    public _http: Http
-  ) {
+  constructor( protected http: HttpClient ) {
     this.url = GLOBAL.url;
   }
 
-  getServices() {
-    return this._http.get(this.url + 'services')
-        .pipe( map(res => res.json()) );
+  public getServices() {
+    return this.http.get(this.url + 'services')
+      .pipe( map( data => <Servicio[]>data ));
   }
 
-  getMethod(_service: string, _metodo: string, _version: string) {
+  public getMethod(_service: string, _metodo: string, _version: string) {
 
-    var postBody = { 'servicio': _service, 'metodo': _metodo, 'version': _version};
-    return this._http.post(this.url + 'metodo', postBody)
-        .pipe( map(res => res.json()) );
-
+    const postBody = { 'servicio': _service, 'metodo': _metodo, 'version': _version};
+      return this.http.post(this.url + 'metodo', postBody)
+        .pipe( map( data => <Metodo>data ) );
   }
 
 }
+
+/*
+        new Metodo(
+          data.metodoNombre,
+          data.metodoVersion,
+          data.descripcion,
+          data.id_tfs,
+          data.transaccional,
+          data.patch_wsdl,
+          data.archivo_wsdl,
+          data.patch_xsd,
+          data.archivo_xsd,
+          data.request_xml,
+          data.responseOk_xml,
+          data.responseErr_xml,
+          data.archivo_esquema,
+          data.archivo_patron
+*/

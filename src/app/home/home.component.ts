@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ServicesService } from '../services.service';
 import { Servicio } from '../servicio';
-import { Metodo } from "../metodo"; 
+import { Metodo } from '../metodo';
+import { relativeTimeThreshold } from 'moment';
 
 @Component({
   selector: 'app-home',
@@ -9,7 +10,7 @@ import { Metodo } from "../metodo";
   styleUrls: ['./home.component.css'],
   providers: [ ServicesService ]
 })
-export class HomeComponent { //implements OnInit {
+export class HomeComponent implements OnInit {
 
   public servicios: Servicio[];
   public metodo: Metodo;
@@ -30,15 +31,16 @@ export class HomeComponent { //implements OnInit {
 
     this._servicesService.getServices().subscribe(
       result => {
+        // this.servicios = <Servicio[]>result;
         this.servicios = result;
       },
       error => {
-        console.log(<any>error);
+        console.log(error);
       }
     );
   }
 
-  getMethod(_service:string, _method: string, _version: string) {
+  getMethod(_service: string, _method: string, _version: string) {
 
     this.metodo = null;
     document.getElementById('detailMethod').scrollTop = 0;
@@ -48,21 +50,20 @@ export class HomeComponent { //implements OnInit {
         this.serviceSelected = _service;
         this.methodSelected = _method;
         this.versionSelected = _version;
-        console.log(result);
         this.metodo = new Metodo(this.serviceSelected + '.' + this.methodSelected,
                                 '',
                                 'Descripción del servicio: ' + this.serviceSelected + ' con método: ' + this.methodSelected,
                                 'S99',
                                 true,
                                 '',
-                                result.WSDL,
+                                result['WSDL'],
                                 '',
-                                result.XSD,
-                                result.Request,
-                                result.ResponseOK,
-                                result.ResponseErrNeg,
-                                result.GraphSchema,
-                                result.GraphPatern);
+                                result['XSD'],
+                                result['Request'],
+                                result['ResponseOK'],
+                                result['ResponseErrNeg'],
+                                result['GraphSchema'],
+                                result['GraphPatern']);
       },
       error => {
         this.serviceSelected = '';
