@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ServicesService } from '../services.service';
 import { Servicio } from '../servicio';
-import { Metodo } from "../metodo"; 
+import { Metodo } from '../metodo';
 
 @Component({
   selector: 'app-form-method',
@@ -24,7 +24,7 @@ export class FormMethodComponent implements OnInit {
 
   getMethodInfo(_service: string, _method: string, _version: string) {
 
-    return this._servicesService.getMethod(_service, _method, _version)
+    // return this._servicesService.getMethod({ _service, _metodo: _method, _version })
 
   }
 

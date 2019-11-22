@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 
 /*
@@ -13,11 +14,12 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 
-import { HttpModule } from '@angular/http';
 import { I7x24Component } from './i7x24/i7x24.component';
 
 import { HighlightJsModule } from 'ngx-highlight-js';
 import { FormMethodComponent } from './form-method/form-method.component';
+
+import { ServicesService } from './services.service';
 
 @NgModule({
   declarations: [
@@ -28,18 +30,18 @@ import { FormMethodComponent } from './form-method/form-method.component';
   ],
   imports: [
     BrowserModule,
-    FormsModule,
+    HttpClientModule,
 /*
     BsDropdownModule.forRoot(),
     TooltipModule.forRoot(),
     ModalModule.forRoot(),
     AngularFontAwesomeModule,
 */
+    FormsModule,
     AppRoutingModule,
-    HttpModule,
     HighlightJsModule
   ],
-  providers: [],
+  providers: [ServicesService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

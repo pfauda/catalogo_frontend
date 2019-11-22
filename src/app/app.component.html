@@ -1,80 +1,24 @@
-<!--
-
-<head>
-  <title>Catálogo de servicios</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-</head>
-
-<body>
-
-
-  <div class="container-fluid body-content h-100">
-
-    <div class="row justify-content-center h-100">
-      <div class="col">
-        <nav class="navbar navbar-expand-sm">
-          <div class="navbar-brand logo-bancor">
-            <img src="../assets/logoBancor.png" alt="Bancor" class="navbar-brand">
-          </div>
-          <ul class="navbar-nav menu-registro">
-            <li class="nav-item"><a class="nav-link" routerLink="/home" routerLinkActive="active">Catálogo</a></li>
-            <li class="nav-item"><a class="nav-link" routerLink="/i7x24" routerLinkActive="active">i7x24</a></li>
-          </ul>
-          <div class="titulo-registro">
-            <a>Registro de servicios</a>
-          </div>
-        </nav>
-      </div>
+<header>
+  <nav class="navbar navbar-expand-sm">
+    <div class="navbar-brand logo-bancor">
+      <img src="./assets/logoBancor.png" alt="Bancor" class="navbar-brand">
     </div>
+    <ul class="navbar-nav menu-registro">
+      <li class="nav-item"><a class="nav-link active" routerLink="/home" routerLinkActive="active">Catálogo</a></li>
+      <li class="nav-item"><a class="nav-link" routerLink="/i7x24" routerLinkActive="active">i7x24</a></li>
+    </ul>
+    <div class="titulo-registro">
+      <a>Registro de servicios</a>
+    </div>
+  </nav>
+</header>
 
+<div class="row justify-content-center h-100">
+  <div class="container-fluid body-content h-100 pr-0">
     <router-outlet></router-outlet>
-
   </div>
+</div>
 
--->
-
-<!--
-  <header>
-    <div class="row justify-content-center h-100">
-      <div class="col">
-        <nav class="navbar navbar-expand-sm">
-          <div class="navbar-brand logo-bancor">
-            <img src="../assets/logoBancor.png" alt="Bancor" class="navbar-brand">
-          </div>
-          <ul class="navbar-nav menu-registro">
-            <li class="nav-item"><a class="nav-link" routerLink="/home" routerLinkActive="active">Catálogo</a></li>
-            <li class="nav-item"><a class="nav-link" routerLink="/i7x24" routerLinkActive="active">i7x24</a></li>
-          </ul>
-          <div class="titulo-registro">
-            <a>Registro de servicios</a>
-          </div>
-        </nav>
-      </div>
-    </div>
-  </header>
--->
-  <header>
-    <nav class="navbar navbar-expand-sm">
-      <div class="navbar-brand logo-bancor">
-        <img src="./assets/logoBancor.png" alt="Bancor" class="navbar-brand">
-      </div>
-      <ul class="navbar-nav menu-registro">
-        <li class="nav-item"><a class="nav-link" routerLink="/home" routerLinkActive="active">Catálogo</a></li>
-        <li class="nav-item"><a class="nav-link" routerLink="/i7x24" routerLinkActive="active">i7x24</a></li>
-      </ul>
-      <div class="titulo-registro">
-        <a>Registro de servicios</a>
-      </div>
-    </nav>
-  </header>
-
-  <div class="row justify-content-center h-100">
-    <div class="container-fluid body-content h-100 pr-0">
-      <router-outlet></router-outlet>
-    </div>
-  </div>
-
-  <footer>
-    <p class="text-right mr-1 mb-0">alpha v0.01</p>
-  </footer>
+<footer>
+  <p class="text-right mr-1 mb-0">alpha v0.01</p>
+</footer>
