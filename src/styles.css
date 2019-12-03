@@ -5,39 +5,14 @@
           box-sizing: border-box;
 }
 
-html {
-  height: 100%;
-  padding: 0;
-  margin: 0;
+.fg-bancor {
+  color: #007D57;
 }
 
-html body {
+html, body {
   padding: 0;
   margin: 0;
-  height: 100%;
   overflow: hidden;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-}
-html body .container-fluid.body-content {
-  width: 100%;
-  overflow: initial !important;
-}
-header {
-  width: 100%;
-}
-footer {
-  width: 100%;
-  font: status-bar;
-  -webkit-box-shadow: inset 0px 3px 9px #C7C7C7;
-          box-shadow: inset 0px 3px 9px #C7C7C7;
-  border-top: 1px solid #808080;
-  z-index: 998;
 }
 
 app-root {
@@ -46,15 +21,18 @@ app-root {
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-     -ms-flex-direction: column;
-         flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
   position: absolute;
   top: 0;
   bottom: 0;
   left: 0;
   right: 0;
+  height: 100vh;
+  overflow: hidden;
 }
 
+/* Barra de scroll personalizada */
 .scrollbar {
   overflow-y: auto;
   overflow-x: hidden;
@@ -88,80 +66,4 @@ app-root {
                          3px 3px 3px rgb(253, 190, 112) inset;
     border: 1px solid rgba(0,0,0,0.3);
     background-color: #f78f10; /*#005f57*/
-}
-
-.bg-gradient-bancor {
-    background: -webkit-gradient(linear, left top, right top, from(#F78F10),to(#007D57));
-    background: -o-linear-gradient(left, #F78F10 0%,#007D57 100%);
-    background: linear-gradient(to right, #F78F10 0%,#007D57 100%);
-}
-
-.bg-bancor {
-    background: #007D57;
-}
-.fg-bancor {
-    color: #007D57;
-}
-
-/* CSS app.component.css */
-.logo-bancor {
-  display: inline-block;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-}
-
-.titulo-registro {
-  position: absolute;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-  top: 0.5rem;
-  display: block;
-  left: calc(100% - 12rem);
-  font-family: Roboto, sans-serif;
-  font-weight: bold;
-  color: #007D57;
-}
-
-.menu-registro {
-  background-color: white;
-  bottom: 0px;
-  left: 15rem;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-  float: left!important;
-  position: absolute;
-}
-
-.navbar {
-  padding-top: 0rem;
-  padding-bottom: 0rem;
-  padding-left: 0.25rem;
-  -webkit-box-shadow: 0px 3px 9px #C7C7C7;
-          box-shadow: 0px 3px 9px #C7C7C7;
-  border-bottom: 1px solid #808080;
-  background-color: white;
-  z-index: 998;
-}
-
-.navbar a {
-  font-size: 15px;
-  font-family: Roboto, sans-serif;
-  font-weight: bold;
-  color: #007D57;
-  text-transform: uppercase;
-  border-bottom: 3px solid white;
-  -webkit-transition: 1s all;
-  -o-transition: 1s all;
-  transition: 1s all;
-}
-
-.navbar-nav .active {
-  color: #007D57;
-  border-bottom: 3px solid #F78F1E;
-}
-
-.navbar-nav a:hover {
-  color: white;
-  background-color: #008466;
-  border-bottom: 3px solid #F78F1E;
 }
