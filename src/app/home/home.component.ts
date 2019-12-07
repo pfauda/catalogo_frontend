@@ -2,7 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { ServicesService } from '../services.service';
 import { Servicio } from '../servicio';
 import { Metodo } from '../metodo';
-import { relativeTimeThreshold } from 'moment';
+import { combineLatest } from 'rxjs';
+import { timer } from 'rxjs';
+import { map } from 'rxjs/operators';
+
+/* import { relativeTimeThreshold } from 'moment'; */
 
 @Component({
   selector: 'app-home',
@@ -17,6 +21,7 @@ export class HomeComponent implements OnInit {
   public serviceSelected: string;
   public methodSelected: string;
   public versionSelected: string;
+  public fade: boolean;
 
   constructor(
     private _servicesService: ServicesService
@@ -25,6 +30,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     this.getServices();
+    this.fade = false;
   }
 
   getServices() {
@@ -42,10 +48,36 @@ export class HomeComponent implements OnInit {
 
   getMethod(_service: string, _method: string, _version: string) {
 
-    this.metodo = null;
-    document.getElementById('detailMethod').scrollTop = 0;
+    /* this.metodo = null; */
+    this.fade = true;
 
-    this._servicesService.getMethod(_service, _method, _version).subscribe(
+    combineLatest([timer(300), this._servicesService.getMethod(_service, _method, _version)])
+      .pipe(map(x => {
+        return x[1];
+      }))
+      .subscribe(result => {
+        this.serviceSelected = _service;
+        this.methodSelected = _method;
+        this.versionSelected = _version;
+        this.metodo = new Metodo(this.serviceSelected + '.' + this.methodSelected,
+                                '',
+                                'Descripción del servicio: ' + this.serviceSelected + ' con método: ' + this.methodSelected,
+                                'S99',
+                                true,
+                                '',
+                                result['WSDL'],
+                                '',
+                                result['XSD'],
+                                result['Request'],
+                                result['ResponseOK'],
+                                result['ResponseErrNeg'],
+                                result['GraphSchema'],
+                                result['GraphPatern']);
+        this.fade = false;
+        document.getElementById('detailMethod').scrollTop = 0;
+      });
+
+/*     this._servicesService.getMethod(_service, _method, _version).subscribe(
       result => {
         this.serviceSelected = _service;
         this.methodSelected = _method;
@@ -64,8 +96,11 @@ export class HomeComponent implements OnInit {
                                 result['ResponseErrNeg'],
                                 result['GraphSchema'],
                                 result['GraphPatern']);
+        this.fade = false;
+        document.getElementById('detailMethod').scrollTop = 0;
       },
       error => {
+        this.metodo = null;
         this.serviceSelected = '';
         this.methodSelected = '';
         this.metodo = new Metodo(this.serviceSelected + '.' + this.methodSelected,
@@ -82,10 +117,11 @@ export class HomeComponent implements OnInit {
                                  '',
                                  '',
                                  '');
+        this.fade = false;
         console.log(<any>error);
       }
     );
-
+ */
   }
 
 }
