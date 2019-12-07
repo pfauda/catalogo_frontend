@@ -4,6 +4,7 @@ import { GLOBAL } from '../assets/global';
 import { map } from 'rxjs/operators';
 import { Metodo } from './metodo';
 import { Servicio } from './servicio';
+import { combineLatest } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -12,20 +13,21 @@ export class ServicesService {
 
   public url: string;
 
-  constructor( protected http: HttpClient ) {
+  constructor(protected http: HttpClient) {
     this.url = GLOBAL.url;
   }
 
   public getServices() {
     return this.http.get(this.url + 'services')
-      .pipe( map( data => <Servicio[]>data ));
+      .pipe(map(data => <Servicio[]>data));
   }
 
   public getMethod(_service: string, _metodo: string, _version: string) {
 
-    const postBody = { 'servicio': _service, 'metodo': _metodo, 'version': _version};
-      return this.http.post(this.url + 'metodo', postBody)
-        .pipe( map( data => <Metodo>data ) );
+    const postBody = { 'servicio': _service, 'metodo': _metodo, 'version': _version };
+    return this.http.post(this.url + 'metodo', postBody)
+      .pipe(map(data => <Metodo>data));
+
   }
 
 }
