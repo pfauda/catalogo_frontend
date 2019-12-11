@@ -1,0 +1,111 @@
+/*Altura de los grupos*/
+.nav-side-menu ul,
+.nav-side-menu li {
+  list-style: none;
+  padding: 0px;
+  margin: 0px;
+  line-height: 20px;
+  cursor: pointer;
+}
+
+/* Flecha abajo del grupo */
+.nav-side-menu ul [data-toggle].collapsed .arrow:before {
+  font-family: FontAwesome;
+  content: "\f078";
+  display: inline-block;
+  padding-left: 10px;
+  padding-right: 10px;
+  vertical-align: middle;
+  float: right;
+}
+
+.nav-side-menu ul [data-toggle]:not(collapsed) .arrow:before {
+  font-family: FontAwesome;
+  content: "\f077";
+  display: inline-block;
+  padding-left: 10px;
+  padding-right: 10px;
+  vertical-align: middle;
+  float: right;
+}
+
+/*Barra izquierda de resalte de los grupos cuando están activos*/
+.nav-side-menu ul .active,
+.nav-side-menu li .active,
+.nav-side-menu ul .sub-menu li.active,
+.nav-side-menu li .sub-menu li.active {
+  background: -webkit-gradient(linear, left top, right bottom, from(black), to(#883300));
+  background: -o-linear-gradient(left top, black 0%, #883300 100%);
+  background: linear-gradient(to right bottom, black 0%, #883300 100%);
+  border-left: 3px solid black;
+  -webkit-transition: all 0.75s ease;
+  -o-transition: all 0.75s ease;
+  transition: all 0.75s ease;
+}
+
+/*Subgrupos*/
+.nav-side-menu ul .sub-menu li {
+  padding-left: 25px;
+  background: #006D57;
+  border-left: 3px solid #006D57;
+  line-height: 20px;
+  border-bottom: 1px solid #014631;
+  margin-left: 0px;
+}
+
+.nav-side-menu li:hover,
+.nav-side-menu ul .sub-menu li:hover,
+.nav-side-menu li .sub-menu li:hover {
+  opacity: 0.66;
+  background: -webkit-gradient(linear, left top, right bottom, from(black), to(#883300));
+  background: -o-linear-gradient(left top, black 0%, #883300 100%);
+  background: linear-gradient(to right bottom, black 0%, #883300 100%);
+  border-left: 3px solid black;
+  -webkit-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+
+.nav-side-menu ul .sub-menu li:before,
+.nav-side-menu li .sub-menu li:before {
+  display: inline-block;
+  padding-left: 10px;
+  padding-right: 10px;
+  vertical-align: middle;
+}
+
+.nav-side-menu li {
+  padding-left: 5px;
+  border-left: 3px solid #007d57;
+  border-bottom: 1px solid #43425d;
+}
+
+.nav-activado {
+  background: #105010 !important;
+  text-decoration: none !important;
+  border-bottom: 2px solid #ff8800 !important;
+}
+
+.nav-side-menu .toggle-btn {
+  display: block;
+  cursor: pointer;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  z-index: 10 !important;
+  padding: 3px;
+  background-color: #ffffff;
+  color: #000;
+  width: 40px;
+  text-align: center;
+}
+
+.menu-list .menu-content {
+  display: block;
+  padding: 0px;
+}
+
+.nav-side-menu {
+  display: block;
+  padding: 0px;
+}

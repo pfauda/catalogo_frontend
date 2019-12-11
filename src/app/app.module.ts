@@ -20,13 +20,17 @@ import { HighlightJsModule } from 'ngx-highlight-js';
 import { FormMethodComponent } from './form-method/form-method.component';
 
 import { ServicesService } from './services.service';
+import { MenulateralComponent } from './menulateral/menulateral.component';
+import { DetailMethodComponent } from './detail-method/detail-method.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     I7x24Component,
-    FormMethodComponent
+    FormMethodComponent,
+    MenulateralComponent,
+    DetailMethodComponent
   ],
   imports: [
     BrowserModule,
