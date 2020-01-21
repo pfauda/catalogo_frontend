@@ -2,20 +2,15 @@
 
 <ng-template #homeVacio>
 
-  <div class="container-fluid body-content h-100 pr-0">
-    <div class="row justify-content-center h-100">
-
-      <div class="jumbotron-fluid vcenter fg-bancor">
-        <i class="fa fa-spinner fa-5x fa-spin"></i>
-      </div>
-
-    </div>
+  <div class="d-flex justify-content-center align-items-center h-100">
+    <mat-progress-spinner [color]="accent" [mode]="indeterminate"></mat-progress-spinner>
   </div>
 
 </ng-template>
 
 <ng-template #homeLleno>
 
+  <!-- Menú lateral -->
   <div class="container-fluid body-content h-100 pr-0">
 
     <div class="row justify-content-center h-100 mr-0">
@@ -40,6 +35,7 @@
         </div>
       </div>
 
+      <!-- Vista de detalle -->
       <div class="col-xs-6 col-sm-7 col-md-8 col-lg-9 pt-3 pb-3 scrollbar h-100" id="detailMethod"
         style="background-color: #F5F5F5;" [ngClass]="{'fade_out': this.fade === true, 'fade_in': this.fade === false}">
 
@@ -89,7 +85,7 @@
                   </div>
                 </mat-tab>
               </mat-tab-group>
-          </mat-card-content>
+            </mat-card-content>
           </mat-card>
 
         </div> <!-- Metodo -->

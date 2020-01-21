@@ -16,8 +16,10 @@ import { ServicesService } from './services.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 /* Material Components */
+import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatCardModule } from '@angular/material/card';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 /* Material Components */
 
 @NgModule({
@@ -40,8 +42,10 @@ import { MatCardModule } from '@angular/material/card';
     AppRoutingModule,
     HighlightJsModule,
     BrowserAnimationsModule,
+    FlexLayoutModule,
     MatTabsModule,
-    MatCardModule
+    MatCardModule,
+    MatProgressSpinnerModule
   ],
   providers: [ServicesService],
   bootstrap: [AppComponent]
