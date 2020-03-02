@@ -1,7 +1,14 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule, Component } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+
+/*
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import { TooltipModule } from 'ngx-bootstrap/tooltip';
+import { ModalModule } from 'ngx-bootstrap/modal';
+import { AngularFontAwesomeModule } from 'angular-font-awesome';
+*/
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -13,21 +20,17 @@ import { HighlightJsModule } from 'ngx-highlight-js';
 import { FormMethodComponent } from './form-method/form-method.component';
 
 import { ServicesService } from './services.service';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
-/* Material Components */
-import { FlexLayoutModule } from '@angular/flex-layout';
-import { MatTabsModule } from '@angular/material/tabs';
-import { MatCardModule } from '@angular/material/card';
-import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-/* Material Components */
+import { MenulateralComponent } from './menulateral/menulateral.component';
+import { DetailMethodComponent } from './detail-method/detail-method.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     I7x24Component,
-    FormMethodComponent
+    FormMethodComponent,
+    MenulateralComponent,
+    DetailMethodComponent
   ],
   imports: [
     BrowserModule,
@@ -40,12 +43,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 */
     FormsModule,
     AppRoutingModule,
-    HighlightJsModule,
-    BrowserAnimationsModule,
-    FlexLayoutModule,
-    MatTabsModule,
-    MatCardModule,
-    MatProgressSpinnerModule
+    HighlightJsModule
   ],
   providers: [ServicesService],
   bootstrap: [AppComponent]

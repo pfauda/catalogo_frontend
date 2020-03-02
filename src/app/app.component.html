@@ -1,11 +1,16 @@
 <header>
-  <nav class="navbar navbar-expand-sm">
-    <img src="./assets/logoBancor.png" alt="Bancor">
-    <div class="navbar-nav">
-      <a class="mat-button active" routerLink="/home" routerLinkActive="active">Catálogo</a>
-      <a class="mat-button" routerLink="/i7x24" routerLinkActive="active">i7x24</a>
+  <nav class="d-flex navbar navbar-expand-sm pt-0 pb-0 pl-2 pr-2">
+    <div class="navbar-brand">
+      <img src="./assets/logoBancor.png" alt="Bancor" class="navbar-brand">
     </div>
-    <a>Registro de servicios</a>
+    <ul class="navbar-nav align-self-end">
+      <li class="nav-item"><a class="nav-link active" routerLink="/home" routerLinkActive="active">Catálogo</a></li>
+      <li class="nav-item"><a class="nav-link" routerLink="/i7x24" routerLinkActive="active">i7x24</a></li>
+    </ul>
+<!--     <div class="titulo-registro"> -->
+    <div class="titulo-registro align-self-start ml-auto">
+        <a>Registro de servicios</a>
+    </div>
   </nav>
 </header>
 
@@ -14,5 +19,5 @@
 </div>
 
 <footer>
-  <p>alpha v0.2</p>
+  <p class="text-right mr-1 mb-1">alpha v0.2</p>
 </footer>
