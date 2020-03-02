@@ -6,7 +6,7 @@ import { Metodo } from '../metodo';
 @Component({
   selector: 'app-form-method',
   templateUrl: './form-method.component.html',
-  styleUrls: ['./form-method.component.css'],
+  styleUrls: ['./form-method.component.scss'],
   providers: [ ServicesService ]
 })
 export class FormMethodComponent implements OnInit {

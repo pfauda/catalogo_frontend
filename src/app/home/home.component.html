@@ -1,42 +1,94 @@
-<!-- <ng-container *ngIf="servicios; then homeLleno; else homeVacio"></ng-container>
+<ng-container *ngIf="servicios; then homeLleno; else homeVacio"></ng-container>
 
 <ng-template #homeVacio>
 
-  <div class="container-fluid body-content h-100 pr-0">
-    <div class="row justify-content-center h-100">
-
-      <div class="jumbotron-fluid vcenter fg-bancor">
-        <i class="fa fa-spinner fa-5x fa-spin"></i>
-      </div>
-
-    </div>
+  <div fxFlexFill fxLayout="row" fxLayoutAlign="center center">
+    <mat-progress-spinner [color]="accent" [mode]="indeterminate"></mat-progress-spinner>
   </div>
 
 </ng-template>
 
-<ng-template #homeLleno> -->
+<ng-template #homeLleno>
 
-<div class="container-fluid body-content h-100 p-0">
+  <!-- Menú lateral -->
+<!--   <div class="container-fluid body-content h-100 pr-0"> -->
+    <div fxFlexFill fxLayout="row" fxLayoutAlign="center center">
 
-  <div class="row justify-content-center h-100 ml-0 mr-0">
+      <div class="nav-side-menu scrollbar" fxFlex.xs="50" fxFlex.sm="35" fxFlex.md="25" fxFlex.lg="20" fxFlex.gt-sm="25" id="MainMenu">
+        <div class="menu-list">
+          <ul *ngFor="let servicio of servicios" id="menu-content" class="menu-content collapse out">
+            <li data-toggle="collapse" [attr.data-target]="'#Service-'+ servicio.servicioNombre" class="collapsed">
+              <a>{{servicio.servicioNombre}}<span class="arrow"></span></a>
+            </li>
+            <div class="sub-menu collapse" aria-expanded="false" data-parent="#MainMenu"
+              [attr.id]="'Service-'+ servicio.servicioNombre">
+              <!--      <div  class="sub-menu collapse" aria-expanded="false" [attr.id]="'Service-'+ servicio.servicioNombre">  -->
+              <ul *ngFor="let metodo of servicio.metodos">
+                <li (click)="getMethod(servicio.servicioNombre, metodo.metodoNombre, metodo.metodoVersion)"
+                  [ngClass]="{active: ((serviceSelected == servicio.servicioNombre) && (methodSelected == metodo.metodoNombre) && (versionSelected == metodo.metodoVersion))}">
+                  {{metodo.metodoNombre}}<span class="badge badge-pill badge-danger">{{metodo.metodoVersion}}</span>
+                </li>
+              </ul>
+            </div>
+          </ul>
+        </div>
+      </div>
 
-    <!-- Menu Lateral -->
-    <div class="col-xs-6 col-sm-5 col-md-4 col-lg-3 p-0 scrollbar h-100 menulateral" id="MainMenu">
-      <app-menulateral (menuLoaded)="setMenuLoaded()" 
-                       (itemSelected)="setMethodSelected($event)"></app-menulateral>
-    </div>
+      <!-- Vista de detalle -->
+      <div class="detalle scrollbar" fxFlex.xs="50" fxFlex.sm="65" fxFlex.md="75" fxFlex.lg="80" id="detailMethod"
+        style="background-color: #F5F5F5;" [ngClass]="{'fade_out': this.fade === true, 'fade_in': this.fade === false}">
 
-    <!-- Detalle del método seleccionado -->
-    <div class="col-xs-6 col-sm-7 col-md-8 col-lg-9 pt-3 pb-3 scrollbar h-100"
-         [ngClass]="{'fade_in': this.fade === true, 'fade_out': this.fade === false}">
-      <app-detail-method *ngIf="this.fade"
-                         [service]="serviceSelected"
-                         [method]="methodSelected"
-                         [version]="versionSelected">
-      </app-detail-method>
-    </div> <!-- Col-8 -->
-  </div> <!-- Row -->
-</div> <!-- Servicio == true -->
+        <div *ngIf="metodo">
+          <mat-card class="mat-elevation-z8">
+            <mat-card-header color="A500">
+              <mat-card-title>{{metodo.metodoNombre}}</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+              <mat-tab-group>
+                <!--
+                    <div id="general" class="container tab-pane active">
+                      <app-form-method></app-form-method>
+                    </div>
+              -->
+                <mat-tab label="Patrón de Diseño">
+                  <img *ngIf="metodo.archivo_patron" class="w-100" [src]="metodo.archivo_patron">
+                  <img *ngIf="!metodo.archivo_patron" class="w-100" src='./assets/Patron_de_disenio.png'>
+                </mat-tab>
+                <mat-tab label="Esquema">
+                  <img *ngIf="metodo.archivo_esquema" class="w-100" [src]="metodo.archivo_esquema">
+                  <img *ngIf="!metodo.archivo_esquema" class="w-100" src='./assets/Esquema_de_Solucion.png'>
+                </mat-tab>
+                <mat-tab label="WSDL">
+                  <div class="text-area">
+                    <textarea highlight-js ngModel="{{metodo.archivo_wsdl}}"></textarea>
+                  </div>
+                </mat-tab>
+                <mat-tab label="XSD">
+                  <div class="text-area">
+                    <textarea highlight-js ngModel="{{metodo.archivo_xsd}}"></textarea>
+                  </div>
+                </mat-tab>
+                <mat-tab label="Request">
+                  <div class="text-area">
+                    <textarea highlight-js ngModel="{{metodo.request_xml}}"></textarea>
+                  </div>
+                </mat-tab>
+                <mat-tab label="Response OK">
+                  <div class="text-area">
+                    <textarea highlight-js ngModel="{{metodo.responseOk_xml}}"></textarea>
+                  </div>
+                </mat-tab>
+                <mat-tab label="Response Error">
+                  <div class="text-area">
+                    <textarea highlight-js ngModel="{{metodo.responseErr_xml}}"></textarea>
+                  </div>
+                </mat-tab>
+              </mat-tab-group>
+            </mat-card-content>
+          </mat-card>
 
-<!-- </ng-template>
- -->
+        </div> <!-- Metodo -->
+      </div> <!-- Col-8 -->
+  </div> <!-- Servicio == true -->
+
+</ng-template>

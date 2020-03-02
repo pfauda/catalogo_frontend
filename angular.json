@@ -13,7 +13,6 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "aot": true,
             "outputPath": "dist/registry-front",
             "index": "src/index.html",
             "main": "src/main.ts",
@@ -25,7 +24,7 @@
             ],
             "styles": [
               "./src/assets/bootstrap.min.css",
-              "./src/styles.css",
+              "./src/styles.scss",
               "./src/assets/gistfile.css",
               "./src/assets/github.min.css",
               "./node_modules/font-awesome/css/font-awesome.css"
@@ -59,10 +58,6 @@
                   "type": "initial",
                   "maximumWarning": "2mb",
                   "maximumError": "5mb"
-                },
-                {
-                  "type": "anyComponentStyle",
-                  "maximumWarning": "6kb"
                 }
               ]
             }
@@ -94,7 +89,7 @@
             "tsConfig": "src/tsconfig.spec.json",
             "karmaConfig": "src/karma.conf.js",
             "styles": [
-              "src/styles.css"
+              "src/styles.scss"
             ],
             "scripts": [],
             "assets": [
@@ -147,7 +142,9 @@
     }
   },
   "defaultProject": "registry-front",
-  "cli": {
-    "analytics": "9c255a64-e8d8-4fd7-9196-423175f74744"
+  "schematics": {
+    "@schematics/angular:component": {
+      "styleext": "scss"
+    }
   }
 }
