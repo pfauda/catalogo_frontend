@@ -30,9 +30,9 @@
               "./src/assets/github.min.css",
               "./node_modules/font-awesome/css/font-awesome.css"
             ],
-            "scripts": [ 
-              "./src/assets/jquery.min.js",  
-              "./src/assets/popper.min.js",  
+            "scripts": [
+              "./src/assets/jquery.min.js",
+              "./src/assets/popper.min.js",
               "./src/assets/bootstrap.min.js",
               "./src/assets/highlight.min.js"
             ]
@@ -146,5 +146,8 @@
       }
     }
   },
-  "defaultProject": "registry-front"
+  "defaultProject": "registry-front",
+  "cli": {
+    "analytics": "9c255a64-e8d8-4fd7-9196-423175f74744"
+  }
 }
