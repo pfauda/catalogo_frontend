@@ -5,12 +5,11 @@ import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+
 import { HomeComponent } from './home/home.component';
-
 import { I7x24Component } from './i7x24/i7x24.component';
-
-import { HighlightJsModule } from 'ngx-highlight-js';
 import { FormMethodComponent } from './form-method/form-method.component';
+import { HtmlviewerComponent } from './htmlviewer/htmlviewer.component';
 
 import { ServicesService } from './services.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -22,30 +21,27 @@ import { MatCardModule } from '@angular/material/card';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 /* Material Components */
 
+import { CodemirrorModule } from '@ctrl/ngx-codemirror';
+
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     I7x24Component,
-    FormMethodComponent
+    FormMethodComponent,
+    HtmlviewerComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
-/*
-    BsDropdownModule.forRoot(),
-    TooltipModule.forRoot(),
-    ModalModule.forRoot(),
-    AngularFontAwesomeModule,
-*/
     FormsModule,
     AppRoutingModule,
-    HighlightJsModule,
     BrowserAnimationsModule,
     FlexLayoutModule,
     MatTabsModule,
     MatCardModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    CodemirrorModule
   ],
   providers: [ServicesService],
   bootstrap: [AppComponent]

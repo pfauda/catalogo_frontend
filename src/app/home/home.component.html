@@ -3,7 +3,7 @@
 <ng-template #homeVacio>
 
   <div fxFlexFill fxLayout="row" fxLayoutAlign="center center">
-    <mat-progress-spinner [color]="accent" [mode]="indeterminate"></mat-progress-spinner>
+    <mat-spinner></mat-spinner>
   </div>
 
 </ng-template>
@@ -11,84 +11,89 @@
 <ng-template #homeLleno>
 
   <!-- Menú lateral -->
-<!--   <div class="container-fluid body-content h-100 pr-0"> -->
-    <div fxFlexFill fxLayout="row" fxLayoutAlign="center center">
+  <!--   <div class="container-fluid body-content h-100 pr-0"> -->
+  <div fxFlexFill fxLayout="row" fxLayoutAlign="center center">
 
-      <div class="nav-side-menu scrollbar" fxFlex.xs="50" fxFlex.sm="35" fxFlex.md="25" fxFlex.lg="20" fxFlex.gt-sm="25" id="MainMenu">
-        <div class="menu-list">
-          <ul *ngFor="let servicio of servicios" id="menu-content" class="menu-content collapse out">
-            <li data-toggle="collapse" [attr.data-target]="'#Service-'+ servicio.servicioNombre" class="collapsed">
-              <a>{{servicio.servicioNombre}}<span class="arrow"></span></a>
-            </li>
-            <div class="sub-menu collapse" aria-expanded="false" data-parent="#MainMenu"
-              [attr.id]="'Service-'+ servicio.servicioNombre">
-              <!--      <div  class="sub-menu collapse" aria-expanded="false" [attr.id]="'Service-'+ servicio.servicioNombre">  -->
-              <ul *ngFor="let metodo of servicio.metodos">
-                <li (click)="getMethod(servicio.servicioNombre, metodo.metodoNombre, metodo.metodoVersion)"
-                  [ngClass]="{active: ((serviceSelected == servicio.servicioNombre) && (methodSelected == metodo.metodoNombre) && (versionSelected == metodo.metodoVersion))}">
-                  {{metodo.metodoNombre}}<span class="badge badge-pill badge-danger">{{metodo.metodoVersion}}</span>
-                </li>
-              </ul>
-            </div>
-          </ul>
-        </div>
+    <div class="nav-side-menu scrollbar" fxFlex.xs="50" fxFlex.sm="35" fxFlex.md="25" fxFlex.lg="20" fxFlex.gt-sm="25"
+      id="MainMenu">
+      <div class="menu-list">
+        <ul *ngFor="let servicio of servicios" id="menu-content" class="menu-content collapse out">
+          <li data-toggle="collapse" [attr.data-target]="'#Service-'+ servicio.servicioNombre" class="collapsed">
+            <a>{{servicio.servicioNombre}}<span class="arrow"></span></a>
+          </li>
+          <div class="sub-menu collapse" aria-expanded="false" data-parent="#MainMenu"
+            [attr.id]="'Service-'+ servicio.servicioNombre">
+            <!--      <div  class="sub-menu collapse" aria-expanded="false" [attr.id]="'Service-'+ servicio.servicioNombre">  -->
+            <ul *ngFor="let metodo of servicio.metodos">
+              <li (click)="getMethod(servicio.servicioNombre, metodo.metodoNombre, metodo.metodoVersion)"
+                [ngClass]="{active: ((serviceSelected == servicio.servicioNombre) && (methodSelected == metodo.metodoNombre) && (versionSelected == metodo.metodoVersion))}">
+                {{metodo.metodoNombre}}<span class="badge badge-pill badge-danger">{{metodo.metodoVersion}}</span>
+              </li>
+            </ul>
+          </div>
+        </ul>
       </div>
+    </div>
 
-      <!-- Vista de detalle -->
-      <div class="detalle scrollbar" fxFlex.xs="50" fxFlex.sm="65" fxFlex.md="75" fxFlex.lg="80" id="detailMethod"
-        style="background-color: #F5F5F5;" [ngClass]="{'fade_out': this.fade === true, 'fade_in': this.fade === false}">
+    <!-- Vista de detalle -->
+    <div class="detalle scrollbar" fxFlex.xs="50" fxFlex.sm="65" fxFlex.md="75" fxFlex.lg="80" id="detailMethod"
+      style="background-color: #F5F5F5;" [ngClass]="{'fade_out': this.fade === true, 'fade_in': this.fade === false}">
 
-        <div *ngIf="metodo">
-          <mat-card class="mat-elevation-z8">
-            <mat-card-header color="A500">
-              <mat-card-title>{{metodo.metodoNombre}}</mat-card-title>
-            </mat-card-header>
-            <mat-card-content>
-              <mat-tab-group>
-                <!--
+      <div *ngIf="metodo">
+        <mat-card class="mat-elevation-z8">
+          <mat-card-header color="A500">
+            <mat-card-title>{{metodo.metodoNombre}}</mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+            <mat-tab-group>
+              <!--
                     <div id="general" class="container tab-pane active">
                       <app-form-method></app-form-method>
                     </div>
               -->
-                <mat-tab label="Patrón de Diseño">
+              <mat-tab label="Patrón de Diseño">
+                <ng-template matTabContent>
                   <img *ngIf="metodo.archivo_patron" class="w-100" [src]="metodo.archivo_patron">
                   <img *ngIf="!metodo.archivo_patron" class="w-100" src='./assets/Patron_de_disenio.png'>
-                </mat-tab>
-                <mat-tab label="Esquema">
+                </ng-template>
+              </mat-tab>
+              <mat-tab label="Esquema">
+                <ng-template matTabContent>
                   <img *ngIf="metodo.archivo_esquema" class="w-100" [src]="metodo.archivo_esquema">
                   <img *ngIf="!metodo.archivo_esquema" class="w-100" src='./assets/Esquema_de_Solucion.png'>
-                </mat-tab>
-                <mat-tab label="WSDL">
-                  <div class="text-area">
-                    <textarea highlight-js ngModel="{{metodo.archivo_wsdl}}"></textarea>
-                  </div>
-                </mat-tab>
-                <mat-tab label="XSD">
-                  <div class="text-area">
-                    <textarea highlight-js ngModel="{{metodo.archivo_xsd}}"></textarea>
-                  </div>
-                </mat-tab>
-                <mat-tab label="Request">
-                  <div class="text-area">
-                    <textarea highlight-js ngModel="{{metodo.request_xml}}"></textarea>
-                  </div>
-                </mat-tab>
-                <mat-tab label="Response OK">
-                  <div class="text-area">
-                    <textarea highlight-js ngModel="{{metodo.responseOk_xml}}"></textarea>
-                  </div>
-                </mat-tab>
-                <mat-tab label="Response Error">
-                  <div class="text-area">
-                    <textarea highlight-js ngModel="{{metodo.responseErr_xml}}"></textarea>
-                  </div>
-                </mat-tab>
-              </mat-tab-group>
-            </mat-card-content>
-          </mat-card>
+                </ng-template>
+              </mat-tab>
+              <mat-tab label="WSDL">
+                <ng-template matTabContent>
+                  <app-htmlviewer xml="{{metodo.archivo_wsdl}}"></app-htmlviewer>
+                </ng-template>
+              </mat-tab>
+              <mat-tab label="XSD">
+                <ng-template matTabContent>
+                  <app-htmlviewer xml="{{metodo.archivo_xsd}}"></app-htmlviewer>
+                </ng-template>
+              </mat-tab>
+              <mat-tab label="Request">
+                <ng-template matTabContent>
+                  <app-htmlviewer xml="{{metodo.request_xml}}"></app-htmlviewer>
+                </ng-template>
+              </mat-tab>
+              <mat-tab label="Response OK">
+                <ng-template matTabContent>
+                  <app-htmlviewer xml="{{metodo.responseOk_xml}}"></app-htmlviewer>
+                </ng-template>
+              </mat-tab>
+              <mat-tab label="Response Error">
+                <ng-template matTabContent>
+                  <app-htmlviewer xml="{{metodo.responseErr_xml}}"></app-htmlviewer>
+                </ng-template>
+              </mat-tab>
+            </mat-tab-group>
+          </mat-card-content>
+        </mat-card>
 
-        </div> <!-- Metodo -->
-      </div> <!-- Col-8 -->
+      </div> <!-- Metodo -->
+    </div> <!-- Col-8 -->
   </div> <!-- Servicio == true -->
 
 </ng-template>

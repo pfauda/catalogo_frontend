@@ -1,0 +1,12 @@
+<ngx-codemirror #cm
+                [(ngModel)]="xml"
+                [options]="{
+                  mode: 'application/xml',
+                  readOnly: true,
+                  lineNumbers: true,
+                  lineWrapping: true,
+                  foldGutter: true,
+                  gutters: ['CodeMirror-linenumbers',
+                            'CodeMirror-foldgutter']
+                }">
+</ngx-codemirror>
