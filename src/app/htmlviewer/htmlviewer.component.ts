@@ -14,6 +14,7 @@ export class HtmlviewerComponent implements AfterViewInit {
 
   ngAfterViewInit(): void {
     this.cm.codeMirror.setSize(null, '100%');
+    setTimeout(() => this.cm.codeMirror.refresh(), 1);
   }
 
 }

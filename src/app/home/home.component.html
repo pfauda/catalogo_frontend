@@ -14,6 +14,7 @@
   <!--   <div class="container-fluid body-content h-100 pr-0"> -->
   <div fxFlexFill fxLayout="row" fxLayoutAlign="center center">
 
+    <!-- Sidebar -->
     <div class="nav-side-menu scrollbar" fxFlex.xs="50" fxFlex.sm="35" fxFlex.md="25" fxFlex.lg="20" fxFlex.gt-sm="25"
       id="MainMenu">
       <div class="menu-list">
@@ -53,14 +54,14 @@
               -->
               <mat-tab label="Patrón de Diseño">
                 <ng-template matTabContent>
-                  <img *ngIf="metodo.archivo_patron" class="w-100" [src]="metodo.archivo_patron">
-                  <img *ngIf="!metodo.archivo_patron" class="w-100" src='./assets/Patron_de_disenio.png'>
+                  <img *ngIf="metodo.archivo_patron" style="width: 100%;" [src]="metodo.archivo_patron">
+                  <img *ngIf="!metodo.archivo_patron" style="width: 100%;" src='./assets/Patron_de_disenio.png'>
                 </ng-template>
               </mat-tab>
               <mat-tab label="Esquema">
                 <ng-template matTabContent>
-                  <img *ngIf="metodo.archivo_esquema" class="w-100" [src]="metodo.archivo_esquema">
-                  <img *ngIf="!metodo.archivo_esquema" class="w-100" src='./assets/Esquema_de_Solucion.png'>
+                  <img *ngIf="metodo.archivo_esquema" style="width: 100%;" [src]="metodo.archivo_esquema">
+                  <img *ngIf="!metodo.archivo_esquema" style="width: 100%;" src='./assets/Esquema_de_Solucion.png'>
                 </ng-template>
               </mat-tab>
               <mat-tab label="WSDL">
@@ -94,6 +95,7 @@
 
       </div> <!-- Metodo -->
     </div> <!-- Col-8 -->
+
   </div> <!-- Servicio == true -->
 
 </ng-template>
