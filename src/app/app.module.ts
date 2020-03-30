@@ -19,6 +19,9 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatCardModule } from '@angular/material/card';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatListModule } from '@angular/material/list';
+import { MatIconModule } from '@angular/material/icon';
+import { MatBadgeModule } from '@angular/material/badge';
 /* Material Components */
 
 import { CodemirrorModule } from '@ctrl/ngx-codemirror';
@@ -41,6 +44,9 @@ import { CodemirrorModule } from '@ctrl/ngx-codemirror';
     MatTabsModule,
     MatCardModule,
     MatProgressSpinnerModule,
+    MatListModule,
+    MatIconModule,
+    MatBadgeModule,
     CodemirrorModule
   ],
   providers: [ServicesService],

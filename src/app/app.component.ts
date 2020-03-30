@@ -6,6 +6,7 @@ import { Servicio } from './servicio';
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
+//  encapsulation: ViewEncapsulation.None,
   providers: [ ServicesService ]
 })
 export class AppComponent implements OnInit {
