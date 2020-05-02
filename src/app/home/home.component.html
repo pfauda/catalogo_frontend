@@ -10,9 +10,7 @@
 
 <ng-template #homeLleno>
 
-  <!-- Menú lateral -->
-  <!--   <div class="container-fluid body-content h-100 pr-0"> -->
-  <div fxFlexFill fxLayout="row" fxLayoutAlign="center center">
+  <div fxFlexFill fxLayout="row" fxLayoutAlign="center">
 
     <!-- Sidebar 
     <div class="nav-side-menu scrollbar" fxFlex.xs="50" fxFlex.sm="35" fxFlex.md="25" fxFlex.lg="20" fxFlex.gt-sm="25"
@@ -69,7 +67,7 @@
 
     <!-- Vista de detalle -->
     <div class="detalle scrollbar" fxFlex.xs="50" fxFlex.sm="65" fxFlex.md="75" fxFlex.lg="80" id="detailMethod"
-      style="background-color: #F5F5F5;" [ngClass]="{'fade_out': this.fade === true, 'fade_in': this.fade === false}">
+         [ngClass]="{'fade_out': this.fade === true, 'fade_in': this.fade === false}">
 
       <div *ngIf="metodo">
         <mat-card class="mat-elevation-z8">

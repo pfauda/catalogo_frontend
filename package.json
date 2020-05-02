@@ -25,7 +25,6 @@
     "@ctrl/ngx-codemirror": "^3.0.1",
     "codemirror": "^5.52.0",
     "core-js": "^3.1.4",
-    "font-awesome": "^4.7.0",
     "rxjs": "~6.5.4",
     "tslib": "^1.11.1",
     "vis": "^4.21.0",

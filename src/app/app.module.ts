@@ -16,6 +16,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 /* Material Components */
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatButtonModule } from '@angular/material/button';
+import { MatMenuModule } from '@angular/material/menu';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatCardModule } from '@angular/material/card';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
@@ -41,6 +44,9 @@ import { CodemirrorModule } from '@ctrl/ngx-codemirror';
     AppRoutingModule,
     BrowserAnimationsModule,
     FlexLayoutModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatMenuModule,
     MatTabsModule,
     MatCardModule,
     MatProgressSpinnerModule,
