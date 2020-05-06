@@ -11,6 +11,7 @@ export class Metodo {
         public archivo_wsdl: string,
         public patch_xsd: string,
         public archivo_xsd: string,
+        public examples: string[],
         public request_xml: string,
         public responseOk_xml: string,
         public responseErr_xml: string,

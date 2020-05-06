@@ -5,7 +5,7 @@ import { Metodo } from '../metodo';
 import { combineLatest } from 'rxjs';
 import { timer } from 'rxjs';
 import { map } from 'rxjs/operators';
-import {animate, state, style, transition, trigger, query, stagger} from '@angular/animations';
+import { animate, state, style, transition, trigger, query, stagger } from '@angular/animations';
 
 /* import { relativeTimeThreshold } from 'moment'; */
 
@@ -78,7 +78,7 @@ export class HomeComponent implements OnInit {
     this.methodSelected = item.metodoNombre;
     this.versionSelected = item.metodoVersion;
     this.getMethod(this.serviceSelected, this.methodSelected, this.versionSelected);
-    console.log(this.methodSelected);
+    console.log(item);
   }
 
   getServices() {
@@ -96,7 +96,6 @@ export class HomeComponent implements OnInit {
 
   getMethod(_service: string, _method: string, _version: string) {
 
-    /* this.metodo = null; */
     this.fade = true;
 
     combineLatest([timer(300), this._servicesService.getMethod(_service, _method, _version)])
@@ -116,61 +115,17 @@ export class HomeComponent implements OnInit {
                                 result['WSDL'],
                                 '',
                                 result['XSD'],
+                                result['examples'],
                                 result['Request'],
                                 result['ResponseOK'],
                                 result['ResponseErrNeg'],
                                 result['GraphSchema'],
                                 result['GraphPatern']);
+        console.log(result);
         this.fade = false;
         document.getElementById('detailMethod').scrollTop = 0;
       });
 
-/*     this._servicesService.getMethod(_service, _method, _version).subscribe(
-      result => {
-        this.serviceSelected = _service;
-        this.methodSelected = _method;
-        this.versionSelected = _version;
-        this.metodo = new Metodo(this.serviceSelected + '.' + this.methodSelected,
-                                '',
-                                'Descripción del servicio: ' + this.serviceSelected + ' con método: ' + this.methodSelected,
-                                'S99',
-                                true,
-                                '',
-                                result['WSDL'],
-                                '',
-                                result['XSD'],
-                                result['Request'],
-                                result['ResponseOK'],
-                                result['ResponseErrNeg'],
-                                result['GraphSchema'],
-                                result['GraphPatern']);
-        this.fade = false;
-        document.getElementById('detailMethod').scrollTop = 0;
-      },
-      error => {
-        this.metodo = null;
-        this.serviceSelected = '';
-        this.methodSelected = '';
-        this.metodo = new Metodo(this.serviceSelected + '.' + this.methodSelected,
-                                 '',
-                                 '',
-                                 '',
-                                 false,
-                                 '',
-                                 '',
-                                 '',
-                                 '',
-                                 '',
-                                 '',
-                                 '',
-                                 '',
-                                 '');
-        this.fade = false;
-        console.log(<any>error);
-      }
-    );
- */
   }
 
 }
-

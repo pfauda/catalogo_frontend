@@ -26,7 +26,9 @@ export class ServicesService {
 
     const postBody = { 'servicio': _service, 'metodo': _metodo, 'version': _version };
     return this.http.post(this.url + 'metodo', postBody)
-      .pipe(map(data => <Metodo>data));
+      .pipe(map(data => {
+        return <Metodo>data;
+      }));
 
   }
 
