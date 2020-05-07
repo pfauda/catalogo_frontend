@@ -54,6 +54,7 @@ export class HomeComponent implements OnInit {
   public methodSelected: string;
   public versionSelected: string;
   public fade: boolean;
+  public tabSelected: 0;
 
   constructor(
     private _servicesService: ServicesService
@@ -77,6 +78,7 @@ export class HomeComponent implements OnInit {
   onMethodSelected(item: Metodo) {
     this.methodSelected = item.metodoNombre;
     this.versionSelected = item.metodoVersion;
+    this.tabSelected = 0;
     this.getMethod(this.serviceSelected, this.methodSelected, this.versionSelected);
     console.log(item);
   }
@@ -103,6 +105,7 @@ export class HomeComponent implements OnInit {
         return x[1];
       }))
       .subscribe(result => {
+        console.log(result);
         this.serviceSelected = _service;
         this.methodSelected = _method;
         this.versionSelected = _version;
@@ -111,17 +114,11 @@ export class HomeComponent implements OnInit {
                                 'Descripción del servicio: ' + this.serviceSelected + ' con método: ' + this.methodSelected,
                                 'S99',
                                 true,
-                                '',
-                                result['WSDL'],
-                                '',
-                                result['XSD'],
-                                result['examples'],
-                                result['Request'],
-                                result['ResponseOK'],
-                                result['ResponseErrNeg'],
+                                result['GraphPatern'],
                                 result['GraphSchema'],
-                                result['GraphPatern']);
-        console.log(result);
+                                result['WSDL'],
+                                result['XSD'],
+                                result['Examples']);
         this.fade = false;
         document.getElementById('detailMethod').scrollTop = 0;
       });

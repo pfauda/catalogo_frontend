@@ -24,9 +24,7 @@
               "src/assets"
             ],
             "styles": [
-              "./src/styles.scss",
-              "./src/assets/gistfile.css",
-              "./src/assets/github.min.css"
+              "./src/styles.scss"
             ],
             "scripts": [
             ]

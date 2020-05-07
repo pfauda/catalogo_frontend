@@ -75,7 +75,7 @@
             <mat-card-title>{{metodo.metodoNombre}}</mat-card-title>
           </mat-card-header>
           <mat-card-content>
-            <mat-tab-group animationDuration="0ms">
+            <mat-tab-group [(selectedIndex)]="tabSelected" animationDuration="0ms">
               <!--
                     <div id="general" class="container tab-pane active">
                       <app-form-method></app-form-method>
@@ -103,19 +103,9 @@
                   <app-htmlviewer xml="{{metodo.archivo_xsd}}"></app-htmlviewer>
                 </ng-template>
               </mat-tab>
-              <mat-tab label="Request">
+              <mat-tab [label]="example.Nombre" *ngFor="let example of metodo.examples">
                 <ng-template matTabContent>
-                  <app-htmlviewer xml="{{metodo.request_xml}}"></app-htmlviewer>
-                </ng-template>
-              </mat-tab>
-              <mat-tab label="Response OK">
-                <ng-template matTabContent>
-                  <app-htmlviewer xml="{{metodo.responseOk_xml}}"></app-htmlviewer>
-                </ng-template>
-              </mat-tab>
-              <mat-tab label="Response Error">
-                <ng-template matTabContent>
-                  <app-htmlviewer xml="{{metodo.responseErr_xml}}"></app-htmlviewer>
+                  <app-htmlviewer xml="{{example.XML}}"></app-htmlviewer>
                 </ng-template>
               </mat-tab>
             </mat-tab-group>
